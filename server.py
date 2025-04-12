@@ -52,7 +52,7 @@ class SocksProxy(StreamRequestHandler):
         assert version == SOCKS_VERSION
 
         # if address_type == 1:  # IPv4
-        # inet_type = socket.AF_INET
+        inet_type = socket.AF_INET
         # address = socket.inet_ntop(inet_type, self.connection.recv(4))
         # elif address_type == 3:  # Domain name
         domain_length = self.connection.recv(1)[0]
