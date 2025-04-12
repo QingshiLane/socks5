@@ -7,8 +7,8 @@ from socketserver import ThreadingMixIn, TCPServer, StreamRequestHandler
 logging.basicConfig(level=logging.DEBUG)
 
 SOCKS_VERSION = 5
-SOCKS_ADDR = '127.0.0.1'
-SOCKS_PORT = 1080
+SOCKS_ADDR = '0.0.0.0'
+SOCKS_PORT = 25602
 SOCKS_USER = 'username'
 SOCKS_PASS = 'password'
 
