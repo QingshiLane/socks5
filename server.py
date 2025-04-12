@@ -51,17 +51,17 @@ class SocksProxy(StreamRequestHandler):
         version, cmd, _, address_type = struct.unpack("!BBBB", self.connection.recv(4))
         assert version == SOCKS_VERSION
 
-        if address_type == 1:  # IPv4
-            inet_type = socket.AF_INET
-            address = socket.inet_ntop(inet_type, self.connection.recv(4))
-        elif address_type == 3:  # Domain name
-            domain_length = self.connection.recv(1)[0]
-            address = self.connection.recv(domain_length)
-            address = socket.gethostbyname(address)
-        else: # IPv6
-        #elif address_type == 4: # IPv6
-            inet_type = socket.AF_INET6
-            address = socket.inet_ntop(inet_type, self.connection.recv(16))
+        # if address_type == 1:  # IPv4
+        inet_type = socket.AF_INET
+        address = socket.inet_ntop(inet_type, self.connection.recv(4))
+        # elif address_type == 3:  # Domain name
+        #     domain_length = self.connection.recv(1)[0]
+        #     address = self.connection.recv(domain_length)
+        #     address = socket.gethostbyname(address)
+        # else: # IPv6
+        # #elif address_type == 4: # IPv6
+        #     inet_type = socket.AF_INET6
+        #     address = socket.inet_ntop(inet_type, self.connection.recv(16))
         port = struct.unpack('!H', self.connection.recv(2))[0]
 
         # reply
